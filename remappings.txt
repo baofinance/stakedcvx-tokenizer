@@ -1,0 +1,4 @@
+ds-test=lib/ds-test/src/
+@openzeppelin=lib/openzeppelin-contracts/contracts
+@solmate=lib/solmate/src
+v2-periphery=lib/v2-periphery/contracts
