@@ -20,7 +20,7 @@ contract cvxTokenizer is ERC4626, Ownable {
     constructor () ERC4626(CVX, "Staked CVX", "sCVX") {
     }
 
-    event log_named_uint(string key, uint val);
+    //event log_named_uint(string key, uint val);
 
     /**
     *Total CVX controlled by the contract is composed of:
@@ -37,7 +37,7 @@ contract cvxTokenizer is ERC4626, Ownable {
             route[1] = CRV;
             route[2] = WETH;
             route[3] = address(CVX);
-            pendingCVX = router.getAmountsOut(pendingRewards, route)[0];
+            pendingCVX = router.getAmountsOut(pendingRewards, route)[3];
 	}
 	else{
 	    pendingCVX = 0;
@@ -51,25 +51,21 @@ contract cvxTokenizer is ERC4626, Ownable {
     */
     function beforeWithdraw(uint256 assets, uint256 shares) internal override {
 	//withdraw assets from CVX Staking
-	emit log_named_uint("Unstaking Assets: ", assets);
-        cvxStaking.withdraw(assets, true);
+        cvxStaking.withdraw(shares, true);
 	//If rewards are > 0.5cvxCRV we sell it for CVX
         uint earnedRew = cvxCRV.balanceOf(address(this));
-	if(earnedRew>0){
+	if(earnedRew==0){
 	    return();
 	} 
         //approve selling of cvxCRV via sushi router
         cvxCRV.approve(address(router),earnedRew);
-        emit log_named_uint("CVX before Trade: ", CVX.balanceOf(address(this)));
-        //Swap cvxCRV for WETH
+	//Swap cvxCRV for WETH
         address[] memory route = new address[](4);
         route[0] = address(cvxCRV);
         route[1] = CRV;
         route[2] = WETH;
         route[3] = address(CVX);
-        uint returnAmount = router.swapExactTokensForTokens(earnedRew, 0, route, address(this), block.timestamp + 1)[0];
-        emit log_named_uint("TradeReturnAMount: ", returnAmount);
-	emit log_named_uint("CVX after Trade: ", CVX.balanceOf(address(this))); 
+        uint returnAmount = router.swapExactTokensForTokens(earnedRew, 0, route, address(this), block.timestamp + 1)[3];
     }
 
     /**

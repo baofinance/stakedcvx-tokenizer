@@ -316,6 +316,47 @@
       "versionRequirement": ">=0.8.0",
       "artifacts": {}
     },
+    "/home/freshpizza/git-repos/StakedCVX-Tokenizer/src/ERC4626.sol": {
+      "lastModificationDate": 1651222701819,
+      "contentHash": "320a1da17c21e035b7affb6d9b3cad25",
+      "sourceName": "src/ERC4626.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs"
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ]
+            }
+          },
+          "evmVersion": "london"
+        }
+      },
+      "imports": [
+        "lib/solmate/src/tokens/ERC20.sol",
+        "lib/solmate/src/utils/FixedPointMathLib.sol",
+        "lib/solmate/src/utils/SafeTransferLib.sol"
+      ],
+      "versionRequirement": ">=0.8.0",
+      "artifacts": {
+        "ERC4626": {
+          "0.8.1+commit.df193b15.Linux.gcc": "ERC4626.sol/ERC4626.json"
+        }
+      }
+    },
     "/home/freshpizza/git-repos/StakedCVX-Tokenizer/src/Interfaces/ICRVDepositor.sol": {
       "lastModificationDate": 1651159074672,
       "contentHash": "71d2fdfd150ad47de6c200a4af8983b1",
@@ -424,8 +465,8 @@
       "artifacts": {}
     },
     "/home/freshpizza/git-repos/StakedCVX-Tokenizer/src/cvxTokenizer.sol": {
-      "lastModificationDate": 1651220532929,
-      "contentHash": "b35bcbb5cfa8743bb587ae292e0babdf",
+      "lastModificationDate": 1651223288859,
+      "contentHash": "5b123324916ffcbd4b477f1a9af57426",
       "sourceName": "src/cvxTokenizer.sol",
       "solcConfig": {
         "settings": {
@@ -463,15 +504,11 @@
         "src/Interfaces/IUniRouter.sol"
       ],
       "versionRequirement": ">=0.8.0",
-      "artifacts": {
-        "cvxTokenizer": {
-          "0.8.1+commit.df193b15.Linux.gcc": "cvxTokenizer.sol/cvxTokenizer.json"
-        }
-      }
+      "artifacts": {}
     },
     "/home/freshpizza/git-repos/StakedCVX-Tokenizer/src/test/tokenizer.t.sol": {
-      "lastModificationDate": 1651220165069,
-      "contentHash": "8ba6335974e963be53940cbcddf1b2a4",
+      "lastModificationDate": 1651227172459,
+      "contentHash": "b05ee0180a9a184b7f60dbe666b57acd",
       "sourceName": "src/test/tokenizer.t.sol",
       "solcConfig": {
         "settings": {
